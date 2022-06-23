@@ -45,6 +45,7 @@ const [userLoggedIn, setUserLoggedIn] = useState(false);
               <MaterialCommunityIcons name='watch' color={color} size={26} />
             ),
           }}
+          
         />
         <Tab.Screen
           name='Settings'
