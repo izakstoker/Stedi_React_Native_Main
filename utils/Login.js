@@ -1,9 +1,8 @@
-import {useState} from "react";
-import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity } from "react-native";
-
-const sendText = async (phoneNumber) => {
+import {useState,} from "react";
+import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, tokenResponse, } from "react-native";
 
   // using fetch do a POST to https://dev.stedi.me/twofactorlogin/208-850-6876
+  const sendText = async (phoneNumber) => {
   await fetch ('https://dev.stedi.me/twofactorlogin/'+phoneNumber, {
     method: 'POST',
     headers: {
@@ -13,9 +12,27 @@ const sendText = async (phoneNumber) => {
   console.log("PhoneNumber: ",phoneNumber);
 };
 
-const Login = () => {
+const Login = (props) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [oneTimePassword, setOneTimePassword] = useState(null);
+
+const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
+  const tokenResponse = await fetch('https://dev.stedi.me/twofactorlogin',{
+    method: 'POST',
+    body:JSON.stringify({oneTimePassword, phoneNumber}),
+    headers: {
+      'content-type':'application/json'
+    }
+  });
+};
+
+const responseCode = tokenResposne.status;
+console.log("Response Status Code", responseCode);
+if(responseCode==200){
+  setUserLoggedIn(true);
+
+const tokenResponseString = await tokenResponse.text;
+}
 
   return (
     <SafeAreaView>
@@ -45,7 +62,8 @@ const Login = () => {
       <TouchableOpacity
         style={styles.button}
         onPress={()=>{sendText(phoneNumber)}}
-      >
+          getToken({phoneNumber, oneTimePassword, {setUserLoggedIn:props.setUserLoggedIn}}) 
+          >
         <Text>Send Text</Text>
       </TouchableOpacity>
     </SafeAreaView>

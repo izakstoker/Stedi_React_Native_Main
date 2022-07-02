@@ -64,7 +64,7 @@ const [userLoggedIn, setUserLoggedIn] = useState(false);
         } else{
           return (
             <View>
-              <Login></Login>
+              <Login setUserLoggedIn={setUserLoggedIn} />
               
             </View>
           )
