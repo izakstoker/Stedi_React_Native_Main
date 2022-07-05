@@ -1,7 +1,7 @@
 import {useState,} from "react";
 import { SafeAreaView, StyleSheet, TextInput, Text, TouchableOpacity, tokenResponse, } from "react-native";
 
-  // using fetch do a POST to https://dev.stedi.me/twofactorlogin/208-850-6876
+  // using fetch do a POST to https://dev.stedi.me/twofactorlogin/(insert Phone Number Here)
   const sendText = async (phoneNumber) => {
   await fetch ('https://dev.stedi.me/twofactorlogin/'+phoneNumber, {
     method: 'POST',
@@ -26,13 +26,13 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
   });
 };
 
-const responseCode = tokenResposne.status;
-console.log("Response Status Code", responseCode);
-if(responseCode==200){
-  setUserLoggedIn(true);
+//const responseCode = tokenResposne.status;
+//console.log("Response Status Code", responseCode);
+//if(responseCode==200){
+  //setUserLoggedIn(true);
 
-const tokenResponseString = await tokenResponse.text;
-}
+//const tokenResponseString = await tokenResponse.text;
+//}
 
   return (
     <SafeAreaView>
@@ -40,12 +40,14 @@ const tokenResponseString = await tokenResponse.text;
         style={styles.input}
         onChangeText={setPhoneNumber}
         value={phoneNumber}
-        placeholder="801-555-1212"
+        placeholder="User Name"
       />
       
       <TouchableOpacity
         style={styles.button}
-        onPress={()=>{sendText(phoneNumber)}}
+        onPress={()=>{
+          sendText(phoneNumber);
+        }}
       >
         <Text>Login</Text>
       </TouchableOpacity>
@@ -54,7 +56,7 @@ const tokenResponseString = await tokenResponse.text;
         style={styles.input}
         onChangeText={setOneTimePassword}
         value={oneTimePassword}
-        placeholder="1234"
+        placeholder="801-555-1212"
         keyboardType="numeric"
         secureTextEntry={true}
       />
@@ -62,10 +64,12 @@ const tokenResponseString = await tokenResponse.text;
       <TouchableOpacity
         style={styles.button}
         onPress={()=>{sendText(phoneNumber)}}
-          getToken({phoneNumber, oneTimePassword, {setUserLoggedIn:props.setUserLoggedIn}}) 
-          >
+         // getToken (phoneNumber, oneTimePassword, {setUserLoggedInprops.setUserLoggedIn}) 
+         >
+          
         <Text>Send Text</Text>
       </TouchableOpacity>
+
     </SafeAreaView>
   );
 };
