@@ -16,9 +16,9 @@ const Tab = createMaterialBottomTabNavigator();
 
 export default function App(props) {
 const [userLoggedIn, setUserLoggedIn] = useState(false);
+const [userName, setUserName] = useState("");
 
   if (userLoggedIn){
-
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -28,7 +28,8 @@ const [userLoggedIn, setUserLoggedIn] = useState(false);
       >
         <Tab.Screen
           name='Home'
-          component={Home}
+          children={()=><Home loggedInUser={userName}/>}
+          // component={Home}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (

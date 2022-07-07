@@ -64,7 +64,7 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
       <TouchableOpacity
         style={styles.button}
         onPress={()=>{sendText(phoneNumber)}}
-         // getToken (phoneNumber, oneTimePassword, {setUserLoggedInprops.setUserLoggedIn}) 
+         //getToken (phoneNumber, oneTimePassword, {setUserLoggedInprops.setUserLoggedIn}) 
          >
           
         <Text>Send Text</Text>
