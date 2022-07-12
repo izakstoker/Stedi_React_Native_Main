@@ -29,7 +29,7 @@ const [userName, setUserName] = useState("");
         <Tab.Screen
           name='Home'
           children={()=><Home loggedInUser={userName}/>}
-          // component={Home}
+          component={Home}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (

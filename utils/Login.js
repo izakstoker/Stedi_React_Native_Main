@@ -26,10 +26,10 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
   });
 };
 
-//const responseCode = tokenResposne.status;
+//const responseCode = tokenResponse.status;
 //console.log("Response Status Code", responseCode);
-//if(responseCode==200){
-  //setUserLoggedIn(true);
+  //if(responseCode==200){
+    //setUserLoggedIn(true);
 
 //const tokenResponseString = await tokenResponse.text;
 //}
@@ -40,7 +40,7 @@ const getToken = async ({phoneNumber, oneTimePassword, setUserLoggedIn}) => {
         style={styles.input}
         onChangeText={setPhoneNumber}
         value={phoneNumber}
-        placeholder="User Name"
+        placeholder="Email Address"
       />
       
       <TouchableOpacity
